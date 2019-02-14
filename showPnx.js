@@ -20,9 +20,9 @@ javascript:(function() {
      recordIdSpan = document.createElement("span"),
      hrefBase = showPnxLinkElem[i].querySelector('.media-thumbnail').querySelector('a').getAttribute('ng-href').replace(/docid=.*?(&|$)/, "docid="+showPnxRecId+"$1"),
      showSourceLinkHref = hrefBase.replace(/fulldisplay/, "sourceRecord").replace(/docid=/, "docId="),
-     showSourceLink = createLink (showSourceLinkHref, "Show Source Record"),
+     showSourceLink = createLink (showSourceLinkHref, "Unimarc"),
      showRISLinkHref = "../primo_library/libweb/action/display.do?doc="+showPnxRecId+"&vid="+urlParamVid+"&showRIS=true",
-     showRISLink = createLink (showRISLinkHref, "Show RIS");
+     showRISLink = createLink (showRISLinkHref, "RIS");
 
    /* Service Pages via old UI for the time being */
    if (/openurl/.test(location) === true) {
@@ -33,7 +33,7 @@ javascript:(function() {
      showPnxLinkHref = showPnxLinkElem[i].querySelector('.urlToXmlPnx').getAttribute('data-url');
    }
 
-   var showPnxLink = createLink (showPnxLinkHref, "Show Pnx");
+   var showPnxLink = createLink (showPnxLinkHref, "Pnx");
    recordIdSpan.className = "show-recordid";
    recordIdSpan.innerHTML = showPnxRecId;
    recordIdSpan.style.padding = "2em 0 0 0";
@@ -44,13 +44,13 @@ javascript:(function() {
    /* No Source-links for Third Node (PCI, EBSCO etc.) records */
    if (/context=L/.test(hrefBase) === true) {
      recordIdSpan.appendChild(showSourceLink);
-     
+
      /* No RIS-links for PrimoVE (no old UI to link to) */
      if (/\/discovery\//.test(hrefBase) === false) {
        recordIdSpan.appendChild(showRISLink);
      }
-   
-   } 
+
+   }
 
    /* Append recordid and links only once */
    if (resultItemLastChild.className !== 'show-recordid') {
