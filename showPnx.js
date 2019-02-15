@@ -26,6 +26,8 @@ javascript:(function() {
      showOAILink = createLink (showOAILinkHref, "OAI"),
      showSRULinkHref = "http://catalogue.bu.univ-rennes2.fr:9998/biblios?version=1.2&operation=searchRetrieve&startRecord=1&maximumRecords=1&query=rec.id%3D"+bn,
      showSRULink = createLink (showSRULinkHref, "SRU"),
+     showJSONLinkHref = "https://catalogue.bu.univ-rennes2.fr/r2microws/json.getSru.php?index=rec.id&q="+bn,
+     showJSONLink = createLink (showJSONLinkHref, "Json SRU"),
      showSourceLinkHref = hrefBase.replace(/fulldisplay/, "sourceRecord").replace(/docid=/, "docId="),
      showSourceLink = createLink (showSourceLinkHref, "Unimarc");
 
@@ -52,6 +54,7 @@ javascript:(function() {
      recordIdSpan.appendChild(showIntranetLink);
      recordIdSpan.appendChild(showOAILink);
      recordIdSpan.appendChild(showSRULink);
+     recordIdSpan.appendChild(showJSONLink);
    }
 
    /* Append recordid and links only once */
